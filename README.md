@@ -1,6 +1,6 @@
 # Metabolome Transformer
 
-Metabolome Transformer is a pretrained transformer model for metabolomics data. This repository provides a clean deployment package for downstream use of the pretrained model.
+Metabolome Transformer is a pretrained transformer model for metabolomics data. This repository provides a deployment package for downstream use of the pretrained model.
 
 ## Features
 
@@ -42,20 +42,21 @@ pip install -r requirements.txt
 
 
 ## Input format
-The input metabolomics file should:
+The input metabolomics file should contain:
 
-contain an ID column  
-contain metabolite columns  
-optionally contain:  
+**an ID column**  
+**metabolite columns**  
+
+**optionally contain:**  
 age  
 sex_binary  
 BMI  
 
-sex_binary encoding  
+**sex_binary encoding**  
 0 = Female  
 1 = Male  
 
-
+---
 
 ## Command-line usage
 ### 1. Impute missing metabolomics values
@@ -110,13 +111,15 @@ metabolome-transformer run-all \
   --batch-size 16
 ```
 
+---
 
 ## Output files
 ### Imputation output
 imputed_metabolomics.csv  
 ### HDS output
-hds_results.csv  
-Columns:  
+hds_results.csv 
+
+**Columns:**  
 eid  
 HDS  
 HDS_percentile  
@@ -124,9 +127,10 @@ HDS_percentile
 ### Risk report output
 input_with_hds.csv  
 one HTML report per participant  
-one PDF report per participant if PDF export is available  
 one CSV file with all predicted outcomes per participant  
 risk_report_summary.csv
+
+---
 
 ## GPU not found
 Use:
