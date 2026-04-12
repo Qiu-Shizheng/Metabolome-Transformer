@@ -10,6 +10,7 @@ This package supports four practical downstream tasks:
 2. **Impute missing metabolomics values**
 3. **Compute Health Deviation Score (HDS)**
 4. **Generate future disease risk reports from HDS**
+5. **Other custom fine-tuning tasks, such as disease prediction**
 
 
 ---
