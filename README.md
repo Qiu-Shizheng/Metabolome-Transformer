@@ -1,8 +1,7 @@
-
 # Metabolome Transformer
 
 <p align="center">
-  <b>Metabolome Transformer is a pretrained transformer model for metabolomics data. This repository provides a deployment package for downstream use of the pretrained model.
+  <b>Metabolome Transformer is a pretrained transformer model for metabolomics data. This repository provides a deployment package for downstream use of the pretrained model.  
 </p>
 
 <p align="center">
@@ -10,6 +9,7 @@
   <img src="https://img.shields.io/badge/Python-3.9%2B-blue">
   <img src="https://img.shields.io/badge/license-MIT-lightgrey">
 </p>
+
 
 ---
 
