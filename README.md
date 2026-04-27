@@ -13,23 +13,15 @@
 
 ---
 
-## Overview
-
-**Metabolome Transformer** provides a deployment package for downstream use of a pretrained transformer model for metabolomics data.
-
-It supports missing value imputation, Health Deviation Score calculation, disease risk report generation, and custom downstream fine-tuning tasks.
-
----
-
 ## Features
 
 This package supports five practical downstream tasks:
 
-1. Load the pretrained **Metabolome Transformer**
-2. Impute missing metabolomics values
-3. Compute **Health Deviation Score**, or **HDS**
-4. Generate future disease risk reports from HDS
-5. Support other custom fine-tuning tasks, such as disease prediction
+1. **Load the pretrained Metabolome Transformer**
+2. **Impute missing metabolomics values**
+3. **Compute Health Deviation Score (HDS)**
+4. **Generate future disease risk reports from HDS**
+5. **Other custom fine-tuning tasks, such as disease prediction**
 
 ---
 
@@ -49,8 +41,8 @@ This package supports five practical downstream tasks:
 ### 3. Disease risk reporting
 
 - Uses HDS together with age, sex, and BMI
-- Generates one formal risk-report-style HTML file per participant
-- Saves HTML reports and summary outputs
+- Generates one formal risk report style per participant
+- Saves HTML reports
 
 ---
 
@@ -59,6 +51,135 @@ This package supports five practical downstream tasks:
 ```bash
 git clone https://github.com/yourname/metabolome-transformer.git
 cd metabolome-transformer
-
 pip install -e .
 pip install -r requirements.txt
+```
+
+---
+
+## Input format
+
+The input metabolomics file should contain:
+
+- **an ID column**
+- **metabolite columns**
+
+It may optionally contain:
+
+- `age`
+- `sex_binary`
+- `BMI`
+
+### `sex_binary` encoding
+
+```text
+0 = Female
+1 = Male
+```
+
+---
+
+## Command-line usage
+
+### 1. Impute missing metabolomics values
+
+```bash
+metabolome-transformer impute \
+  --input data/my_cohort.csv \
+  --output results/imputed_metabolomics.csv \
+  --device cuda \
+  --batch-size 16
+```
+
+### 2. Compute HDS
+
+```bash
+metabolome-transformer hds \
+  --input data/my_cohort.csv \
+  --output results/hds_results.csv \
+  --device cuda \
+  --batch-size 16
+```
+
+### 3. Generate risk reports
+
+The input file must contain:
+
+- `eid`
+- metabolite columns
+- `age`
+- `sex_binary`
+- `BMI`
+
+```bash
+metabolome-transformer report \
+  --input data/my_cohort_with_clinical.csv \
+  --output-dir results/reports \
+  --device cuda \
+  --batch-size 16
+```
+
+### 4. Run the full pipeline
+
+This runs:
+
+- imputation
+- HDS scoring
+- disease risk report generation
+
+```bash
+metabolome-transformer run-all \
+  --input data/my_cohort_with_clinical.csv \
+  --output-dir results/full_run \
+  --device cuda \
+  --batch-size 16
+```
+
+---
+
+## Output files
+
+### Imputation output
+
+```text
+imputed_metabolomics.csv
+```
+
+### HDS output
+
+```text
+hds_results.csv
+```
+
+**Columns:**
+
+```text
+eid
+HDS
+HDS_percentile
+```
+
+### Risk report output
+
+```text
+input_with_hds.csv
+one HTML report per participant
+one CSV file with all predicted outcomes per participant
+risk_report_summary.csv
+```
+
+---
+
+## GPU not found
+
+Use:
+
+```bash
+--device cpu
+```
+
+instead of:
+
+```bash
+--device cuda
+```
