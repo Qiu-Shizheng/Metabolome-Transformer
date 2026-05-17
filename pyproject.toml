@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metabolome-transformer"
+version = "0.1.0"
+description = "Transformer utilities for metabolomics imputation and binary disease prediction."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=1.5",
+  "scikit-learn>=1.2",
+  "torch>=2.0",
+]
+
+[project.scripts]
+metabolome-transformer = "metabolome_transformer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["metabolome_transformer*"]

@@ -1,0 +1,22 @@
+{
+  "hidden_size": 512,
+  "num_layers": 8,
+  "num_heads": 8,
+  "ff_size": 2048,
+  "dropout": 0.1,
+  "num_induce": 4,
+  "proj_dim": 64,
+  "lr": 0.0006345129534023919,
+  "weight_decay": 0.059284881556627575,
+  "warmup_ratio": 0.1,
+  "lambda_corr": 0.00024021248239907306,
+  "lambda_contrastive": 0.10104080212231846,
+  "mask_start": 0.1,
+  "mask_end": 0.4,
+  "corr_warmup_epochs": 1,
+  "corr_ramp_epochs": 13,
+  "corr_subset_ratio": 0.18115251127528398,
+  "corr_subset_min": 149,
+  "early_stop_alpha": 1.1834348129349668,
+  "early_stop_beta": 1.1788471424003761
+}
